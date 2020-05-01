@@ -2,7 +2,7 @@
 set -e
 
 bucket=${bucket:-elastiknn-benchmarks}
-prefix=${prefix:-data/test/amazon-reviews/images}
+prefix=${prefix:-data/amazon-reviews/images}
 n=${n:-1000}
 skip=${skip:-$(aws s3api list-objects --bucket $bucket --prefix $prefix --output json --query "length(Contents[])" || echo 0)}
 jobs=${jobs:-$(grep -c processor /proc/cpuinfo)}
