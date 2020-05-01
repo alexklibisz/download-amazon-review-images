@@ -14,6 +14,5 @@ if __name__ == "__main__":
       if i >= n + skip > 0:
         break
       d = eval(l)
-      if "imUrl" in d:
+      if "imUrl" in d and d["imUrl"].endswith("jpg"):
         print(d["imUrl"], d["asin"])
-
