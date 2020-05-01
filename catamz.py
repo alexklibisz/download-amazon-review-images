@@ -13,5 +13,7 @@ if __name__ == "__main__":
         continue
       if i >= n + skip > 0:
         break
-      sys.stdout.write(json.dumps(eval(l)) + '\n')
+      d = eval(l)
+      if "imUrl" in d:
+        print(d["imUrl"], d["asin"])
 
