@@ -4,11 +4,14 @@ import gzip
 import sys
 
 if __name__ == "__main__":
-  assert len(sys.argv) >= 2, "usage: <script> <gzipped path> <n>"
-  n = int(sys.argv[2]) if len(sys.argv) == 3 else -1
+  assert len(sys.argv) == 4, "usage: <script> <gzipped path> <skip n> <read n>"
+  skip = int(sys.argv[2])
+  n = int(sys.argv[3])
   with gzip.open(sys.argv[1], 'r') as g:
     for i,l in enumerate(g):
-      if i >= n > 0:
+      if i < skip:
+        continue
+      if i >= n + skip > 0:
         break
       sys.stdout.write(json.dumps(eval(l)) + '\n')
 
