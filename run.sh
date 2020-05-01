@@ -3,7 +3,7 @@
 BUCKET=${BUCKET:-elastiknn-benchmarks}
 PREFIX=${PREFIX:-data/amazon-reviews/images}
 N=${N:-100000}
-N_FINISHED=$(aws s3api list-objects --bucket $BUCKET --prefix $PREFIX --output json --query "length(Contents[])") 
+N_FINISHED=$(aws s3api list-objects --bucket $BUCKET --prefix $PREFIX --output json --query "length(Contents[])" || echo 0)
 
 echo "Found $N_FINISHED images already saved"
 
