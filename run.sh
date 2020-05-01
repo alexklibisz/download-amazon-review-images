@@ -12,4 +12,3 @@ echo "Skipping first $skip images. Reading next $n images with parallelism $jobs
 python3 -u catamz.py $1 $skip $n \
   | parallel --jobs $jobs --bar --retries 3 --halt now,fail=10 --colsep ' ' \
   "./single.sh {1} $bucket $prefix/{2}.jpg"
-  # "curl -sf {1} | aws s3 cp - s3://$bucket/$prefix/{2}.jpg"
